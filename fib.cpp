@@ -1,22 +1,27 @@
 #include <stdio.h>
 #include<iostream>
-
+#include <vector>
 
 using namespace std;
 
-int Fibonacci_of(int index)
-{
-	if (index == 1 || index == 2)
-		return 1;
-
-	return Fibonacci_of(index - 1) + Fibonacci_of(index - 2);
-}
+class Fibonacci {
+public:
+	static double of(int n)
+	{
+		vector<int> dp(n + 1, 1);
+		for (int i = 3; i <= n; i++)
+		{
+			dp[i] = dp[i - 1] + dp[i - 2];
+		}
+		return dp[n];
+	}
+};
 
 
 int main()
 {
 	for (int i = 1; i <= 200; i++)
 	{
-		cout << Fibonacci_of(i) << endl;
+		cout << Fibonacci::of(i) << endl;
 	}
 }
